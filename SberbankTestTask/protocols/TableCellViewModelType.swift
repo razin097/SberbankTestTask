@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol TableViewCellViewModelType {
+protocol TableCellViewModelType {
     
     
 }

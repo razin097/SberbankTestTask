@@ -12,10 +12,10 @@ protocol UpdateTableDelegate {
     func onReadyDataLoad()
 }
 
-class TableViewController: UITableViewController, UpdateTableDelegate {
+class TableViewController: UITableViewController, UpdateTableDelegate, UISearchBarDelegate {
 
-    let searchField = UITextField()
-    var viewModel: TableViewModelType?
+    @IBOutlet weak var searchBar: UISearchBar!
+    var viewModel: TableViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,22 +23,16 @@ class TableViewController: UITableViewController, UpdateTableDelegate {
         viewModel = TableViewModel(delegate: self)
         viewModel?.getJsonFromApi(searchWord: defaultSearchWord)
         tableView.rowHeight = CGFloat(tableViewRowHeigth)
-
+        searchBar.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
-//        presentSearchView()
+        
     }
-
-    func presentSearchView() {
-        refreshSearchFrame()
-        view.addSubview(searchField)
-    }
-
-    func refreshSearchFrame() {
-        let frame = CGRect(x: 0, y: 100, width: self.view.frame.width, height: 70)
-        searchField.frame = frame
-        searchField.backgroundColor = .lightGray
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let searchWord = searchBar.text ?? defaultSearchWord
+        viewModel?.getJsonFromApi(searchWord: searchWord)
     }
 
     func onReadyDataLoad() {
@@ -52,16 +46,16 @@ class TableViewController: UITableViewController, UpdateTableDelegate {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell = UITableViewCell()
-        tableViewCell.textLabel?.numberOfLines = 3
-        tableViewCell.textLabel?.text = viewModel?.getPublication(forRow: indexPath.row)?.title
-
-        return tableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CustomTableViewCell
+        guard let tableCell = cell, let cellViewModel =  viewModel?.cellViewModel(forRow: indexPath.row) else {
+            return UITableViewCell()
+        }
+        tableCell.viewModel = cellViewModel
+        return tableCell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
         performSegue(withIdentifier: "goToDetailView", sender: self)
     }
 

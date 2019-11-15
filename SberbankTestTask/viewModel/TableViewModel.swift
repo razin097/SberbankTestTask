@@ -31,11 +31,16 @@ class TableViewModel: TableViewModelType {
     func getPublication(forRow: Int) -> Publication? {
         return publications?[forRow]
     }
+    
+    func cellViewModel(forRow: Int) -> TableCellViewModel {
+        let publication:Publication? = publications?[forRow]
+        return TableCellViewModel(publication: publication)
+    }
 
 
     func getJsonFromApi(searchWord: String) {
         //q=bitcoin&from=2019-10-13&sortBy=publishedAt&apiKey=
-        let url = urlPrefix + "q=\(searchWord)&from=\(fromDate)&sortBy=publishedAt&apiKey=\(apiKey)"
+        let url = urlPrefix + "q=\(searchWord == "" ? "news" : searchWord)&from=\(fromDate)&sortBy=publishedAt&apiKey=\(apiKey)"
         let task = URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
 
                 guard let data = data else { return }

@@ -16,9 +16,10 @@
 		EF1B151F2374410100FFFA56 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1B151D2374410100FFFA56 /* DetailViewController.swift */; };
 		EF5C2958237DBEFB0037D3F8 /* PublicationsStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C2957237DBEFB0037D3F8 /* PublicationsStruct.swift */; };
 		EF5C295A237DC5230037D3F8 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C2959237DC5230037D3F8 /* CustomTableViewCell.swift */; };
+		EF5C295C237E0EA50037D3F8 /* TableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C295B237E0EA50037D3F8 /* TableCellViewModel.swift */; };
 		EFCA9D20237B7A9C00DA2AE9 /* DetailViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA9D1F237B7A9C00DA2AE9 /* DetailViewModelType.swift */; };
 		EFCA9D22237B7ABD00DA2AE9 /* TableViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA9D21237B7ABD00DA2AE9 /* TableViewModelType.swift */; };
-		EFCA9D24237B7AD300DA2AE9 /* TableViewCellViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA9D23237B7AD300DA2AE9 /* TableViewCellViewModelType.swift */; };
+		EFCA9D24237B7AD300DA2AE9 /* TableCellViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA9D23237B7AD300DA2AE9 /* TableCellViewModelType.swift */; };
 		EFCA9D27237CAF8100DA2AE9 /* config.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA9D26237CAF8100DA2AE9 /* config.swift */; };
 		EFCA9D29237CB0DA00DA2AE9 /* Publication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA9D28237CB0DA00DA2AE9 /* Publication.swift */; };
 		EFCA9D2B237CBB3E00DA2AE9 /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA9D2A237CBB3E00DA2AE9 /* TableViewModel.swift */; };
@@ -36,9 +37,10 @@
 		EF1B151D2374410100FFFA56 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EF5C2957237DBEFB0037D3F8 /* PublicationsStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationsStruct.swift; sourceTree = "<group>"; };
 		EF5C2959237DC5230037D3F8 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		EF5C295B237E0EA50037D3F8 /* TableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellViewModel.swift; sourceTree = "<group>"; };
 		EFCA9D1F237B7A9C00DA2AE9 /* DetailViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelType.swift; sourceTree = "<group>"; };
 		EFCA9D21237B7ABD00DA2AE9 /* TableViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModelType.swift; sourceTree = "<group>"; };
-		EFCA9D23237B7AD300DA2AE9 /* TableViewCellViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellViewModelType.swift; sourceTree = "<group>"; };
+		EFCA9D23237B7AD300DA2AE9 /* TableCellViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellViewModelType.swift; sourceTree = "<group>"; };
 		EFCA9D26237CAF8100DA2AE9 /* config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = config.swift; sourceTree = "<group>"; };
 		EFCA9D28237CB0DA00DA2AE9 /* Publication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publication.swift; sourceTree = "<group>"; };
 		EFCA9D2A237CBB3E00DA2AE9 /* TableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
@@ -95,7 +97,7 @@
 			children = (
 				EFCA9D1F237B7A9C00DA2AE9 /* DetailViewModelType.swift */,
 				EFCA9D21237B7ABD00DA2AE9 /* TableViewModelType.swift */,
-				EFCA9D23237B7AD300DA2AE9 /* TableViewCellViewModelType.swift */,
+				EFCA9D23237B7AD300DA2AE9 /* TableCellViewModelType.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				EFCA9D2A237CBB3E00DA2AE9 /* TableViewModel.swift */,
+				EF5C295B237E0EA50037D3F8 /* TableCellViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -198,12 +201,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF5C2958237DBEFB0037D3F8 /* PublicationsStruct.swift in Sources */,
-				EFCA9D24237B7AD300DA2AE9 /* TableViewCellViewModelType.swift in Sources */,
+				EFCA9D24237B7AD300DA2AE9 /* TableCellViewModelType.swift in Sources */,
 				EFCA9D2B237CBB3E00DA2AE9 /* TableViewModel.swift in Sources */,
 				EF1B150E23735DD900FFFA56 /* TableViewController.swift in Sources */,
 				EF1B150A23735DD900FFFA56 /* AppDelegate.swift in Sources */,
 				EF1B150C23735DD900FFFA56 /* SceneDelegate.swift in Sources */,
 				EF5C295A237DC5230037D3F8 /* CustomTableViewCell.swift in Sources */,
+				EF5C295C237E0EA50037D3F8 /* TableCellViewModel.swift in Sources */,
 				EFCA9D29237CB0DA00DA2AE9 /* Publication.swift in Sources */,
 				EFCA9D20237B7A9C00DA2AE9 /* DetailViewModelType.swift in Sources */,
 				EFCA9D27237CAF8100DA2AE9 /* config.swift in Sources */,

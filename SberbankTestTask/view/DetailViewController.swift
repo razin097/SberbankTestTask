@@ -21,7 +21,8 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         for k in self.view.subviews {
             if k is UILabel {
-                (k as! UILabel).text = self.text
+                k.layer.cornerRadius = 15
+                k.layer.masksToBounds = true
             }
         }
     }
