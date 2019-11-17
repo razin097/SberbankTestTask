@@ -10,12 +10,15 @@ import Foundation
 
 class TableCellViewModel: TableCellViewModelType {
     
+    //MARK: - var, let, property
     internal let publication:Publication?
     
+    //MARK: - init
     required init (publication: Publication?) {
         self.publication = publication
     }
     
+    //MARK: - public vars
     var title:String {
         return publication?.title ?? ""
     }

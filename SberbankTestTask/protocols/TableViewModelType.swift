@@ -17,17 +17,13 @@ protocol TableViewModelType {
     var numberOfRows: Int {get}
     
     func resetMaxNumberOfRows()
-
-    func getPublication(forRow: Int) -> Publication?
     
     //MARK: - json get & parse
     func refreshData(searchWord: String)
     
     //MARK: - load more
     func loadMore(searchWord: String?)
-    
-    func moreRows() -> Bool
-    
+        
     //MARK: - view models
     func cellViewModel(forRow: Int) -> TableCellViewModelType
     

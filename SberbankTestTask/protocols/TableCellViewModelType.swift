@@ -10,8 +10,10 @@ import Foundation
 
 protocol TableCellViewModelType: class {
         
+    //MARK: - init
     init (publication: Publication?)
     
+    //MARK: - public vars
     var title:String {get}
     
     var urlToImage:String {get}

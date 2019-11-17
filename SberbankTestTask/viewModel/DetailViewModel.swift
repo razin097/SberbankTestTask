@@ -10,16 +10,7 @@ import Foundation
 
 class DetailViewModel: TableCellViewModel, DetailViewModelType {
     
-    func setUrlWached(){
-        var watched:[String] = (UserDefaults.standard.array(forKey: "watched") ?? [] )as! [String]
-        print("watched = ", watched)
-        if !(watched.contains(self.url)) {
-            watched.append(url)
-            UserDefaults.standard.set(watched, forKey: "watched")
-            UserDefaults.standard.synchronize()
-        }
-    }
-    
+    //MARK: - public vars
     var url:String {
         return publication?.urlToPublication ?? ""
     }
@@ -30,5 +21,16 @@ class DetailViewModel: TableCellViewModel, DetailViewModelType {
     
     var publishedAt:String {
         return publication?.publishedAt ?? ""
+    }
+    
+    //MARK: - functions
+    func setUrlWached(){
+        var watched:[String] = (UserDefaults.standard.array(forKey: "watched") ?? [] )as! [String]
+        print("watched = ", watched)
+        if !(watched.contains(self.url)) {
+            watched.append(url)
+            UserDefaults.standard.set(watched, forKey: "watched")
+            UserDefaults.standard.synchronize()
+        }
     }
 }

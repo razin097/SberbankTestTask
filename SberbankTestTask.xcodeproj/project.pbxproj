@@ -97,9 +97,9 @@
 		EFCA9D1B237B682200DA2AE9 /* protocols */ = {
 			isa = PBXGroup;
 			children = (
-				EFCA9D1F237B7A9C00DA2AE9 /* DetailViewModelType.swift */,
 				EFCA9D21237B7ABD00DA2AE9 /* TableViewModelType.swift */,
 				EFCA9D23237B7AD300DA2AE9 /* TableCellViewModelType.swift */,
+				EFCA9D1F237B7A9C00DA2AE9 /* DetailViewModelType.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -107,8 +107,8 @@
 		EFCA9D1C237B683800DA2AE9 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				EF1B151D2374410100FFFA56 /* DetailViewController.swift */,
 				EF1B150D23735DD900FFFA56 /* TableViewController.swift */,
+				EF1B151D2374410100FFFA56 /* DetailViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";

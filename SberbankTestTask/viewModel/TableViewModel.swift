@@ -33,10 +33,6 @@ class TableViewModel: TableViewModelType {
     func resetMaxNumberOfRows(){
         self.maxNumberOfRows = numberOfRowsInEachPart
     }
-
-    func getPublication(forRow: Int) -> Publication? {
-        return publications?[forRow]
-    }
     
     //MARK: - json get & parse
     public func refreshData(searchWord: String) {
