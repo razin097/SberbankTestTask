@@ -8,7 +8,13 @@
 
 import Foundation
 
-protocol TableCellViewModelType {
+protocol TableCellViewModelType: class {
+        
+    init (publication: Publication?)
     
+    var title:String {get}
     
+    var urlToImage:String {get}
+    
+    var isWatched:Bool {get}
 }

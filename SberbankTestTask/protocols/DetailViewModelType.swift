@@ -8,6 +8,13 @@
 
 import Foundation
 
-protocol DetailViewModelType {
+protocol DetailViewModelType: TableCellViewModelType {
     
+    func setUrlWached()
+    
+    var url:String {get}
+    
+    var description:String {get}
+    
+    var publishedAt:String {get}
 }

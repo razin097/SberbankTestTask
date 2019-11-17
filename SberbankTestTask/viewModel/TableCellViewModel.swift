@@ -10,9 +10,9 @@ import Foundation
 
 class TableCellViewModel: TableCellViewModelType {
     
-    private let publication:Publication?
+    internal let publication:Publication?
     
-    init (publication: Publication?) {
+    required init (publication: Publication?) {
         self.publication = publication
     }
     
@@ -21,18 +21,13 @@ class TableCellViewModel: TableCellViewModelType {
     }
     
     var urlToImage:String {
-        return publication?.urlToImage ?? ""
+        return publication?.urlToImage ?? "no image url in publication"
     }
     
-    var isWatched = false
-    
-//
-//    func getCell() -> CustomTableViewCell {
-//        let cell = CustomTableViewCell()
-//        cell.titleLable?.text = publication?.title ?? ""
-//        cell.urlToImageLable?.text = publication?.author ?? ""
-//        cell.titleLable?.numberOfLines = 3
-//
-//        return cell
-//    }
+    var isWatched:Bool {
+        guard let publication = self.publication  else {return false}
+        guard let url = publication.urlToPublication  else {return false}
+        let arr = UserDefaults.standard.array(forKey: "watched") as? [String]
+        return arr?.contains(url) ?? false
+    }
 }

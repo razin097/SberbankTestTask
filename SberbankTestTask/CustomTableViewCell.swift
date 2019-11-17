@@ -15,18 +15,31 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var urlToImageLable: UILabel!
     @IBOutlet weak var watched: UILabel!
     
-    weak var viewModel: TableCellViewModel? {
+    func setWatched(){
+        titleLable.alpha = 0.25
+        urlToImageLable.alpha = 0.25
+        watched.isHidden = false
+    }
+    
+    func setNotWatched(){
+        titleLable.alpha = 1
+        urlToImageLable.alpha = 1
+        watched.isHidden = true
+    }
+    
+    weak var viewModel: TableCellViewModelType? {
         willSet(viewModel){
             titleLable.text = viewModel?.title
             urlToImageLable.text = viewModel?.urlToImage
-            if viewModel?.isWatched == true {
-                titleLable.alpha = 0.25
-                urlToImageLable.alpha = 0.25
-                watched.isHidden = false
+            if viewModel?.urlToImage == "no image url in publication" {
+                urlToImageLable.textColor = .secondaryLabel
             } else {
-                titleLable.alpha = 1
-                urlToImageLable.alpha = 1
-                watched.isHidden = true
+                urlToImageLable.textColor = .link
+            }
+            if viewModel?.isWatched == true {
+                self.setWatched()
+            } else {
+                self.setNotWatched()
             }
         }
     }

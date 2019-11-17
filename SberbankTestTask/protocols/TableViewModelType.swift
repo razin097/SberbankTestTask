@@ -9,11 +9,27 @@
 import Foundation
 
 protocol TableViewModelType {
+
+    //MARK: - init
+    init(delegate:UpdateTableDelegate)
     
-    var numberOfRows:Int  {get}
+    //MARK: - rows counting
+    var numberOfRows: Int {get}
     
+    func resetMaxNumberOfRows()
+
     func getPublication(forRow: Int) -> Publication?
     
-    func getJsonFromApi(searchWord: String)
+    //MARK: - json get & parse
+    func refreshData(searchWord: String)
     
+    //MARK: - load more
+    func loadMore(searchWord: String?)
+    
+    func moreRows() -> Bool
+    
+    //MARK: - view models
+    func cellViewModel(forRow: Int) -> TableCellViewModelType
+    
+    func detailViewModel(forRow: Int) -> DetailViewModelType
 }

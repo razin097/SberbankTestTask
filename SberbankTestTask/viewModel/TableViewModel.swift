@@ -11,50 +11,52 @@ import Foundation
 
 class TableViewModel: TableViewModelType {
     
-    var delegate:UpdateTableDelegate?
+    //MARK: - var, let, property
+    private var delegate:UpdateTableDelegate?
+    private var publications: [Publication]?
+    private var maxNumberOfRows = numberOfRowsInEachPart
     
-    init(delegate:UpdateTableDelegate) {
+    //MARK: - init
+    required init(delegate:UpdateTableDelegate) {
         self.delegate = delegate
     }
     
-    
+    //MARK: - rows counting
     var numberOfRows: Int {
         guard let publications = publications else {return 0}
-        if publications.count > numberOfRowsInEachPart {
-            return numberOfRowsInEachPart
+        if publications.count > self.maxNumberOfRows {
+            return maxNumberOfRows
         }
         return publications.count
     }
-    var publications: [Publication]?
     
+    func resetMaxNumberOfRows(){
+        self.maxNumberOfRows = numberOfRowsInEachPart
+    }
 
     func getPublication(forRow: Int) -> Publication? {
         return publications?[forRow]
     }
     
-    func cellViewModel(forRow: Int) -> TableCellViewModel {
-        let publication:Publication? = publications?[forRow]
-        return TableCellViewModel(publication: publication)
-    }
-
-
-    func getJsonFromApi(searchWord: String) {
+    //MARK: - json get & parse
+    public func refreshData(searchWord: String) {
         //q=bitcoin&from=2019-10-13&sortBy=publishedAt&apiKey=
-        let url = urlPrefix + "q=\(searchWord == "" ? "news" : searchWord)&from=\(fromDate)&sortBy=publishedAt&apiKey=\(apiKey)"
-        let task = URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
+        let urlString = urlPrefix + "q=\(searchWord == "" ? "news" : searchWord)&from=\(fromDate)&sortBy=publishedAt&apiKey=\(apiKey)"
+        print(urlString)
+        guard let url = URL(string: urlString) else {return}
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
 
                 guard let data = data else { return }
                 do {
                     let decoder = JSONDecoder()
                     let response = try decoder.decode(PublicationsStruct.self, from: data)
-                    print(response)
                     self.parsePublications(publs: response)
                 } catch { print(error) }
             })
         task.resume()
     }
 
-    func parsePublications(publs: PublicationsStruct) {
+    private func parsePublications(publs: PublicationsStruct) {
         var arr: [Publication] = Array()
 
         for k in publs.articles {
@@ -70,41 +72,39 @@ class TableViewModel: TableViewModelType {
         self.publications = arr
         self.updateTable()
     }
-
-    func updateTable() {
-        delegate?.onReadyDataLoad()
+    
+    //MARK: - load more
+    func loadMore(searchWord: String?){
+        if self.moreRows() == true {
+            self.refreshData(searchWord: searchWord ?? defaultSearchWord)
+        }
     }
-
-    func getPublicationsFromApi(searchWord: String = defaultSearchWord, maxCount: Int = numberOfRowsInEachPart) {
-        getJsonFromApi(searchWord: searchWord)
+    
+    func moreRows() -> Bool {
+        let buf = self.maxNumberOfRows
+        self.maxNumberOfRows += numberOfRowsInEachPart
+        if self.maxNumberOfRows > maxNumberOfRowsInTable {
+            self.maxNumberOfRows = maxNumberOfRowsInTable
+        }
+        return buf != self.maxNumberOfRows
+    }
+    
+    //MARK: - view models
+    func cellViewModel(forRow: Int) -> TableCellViewModelType {
+        let publication:Publication? = publications?[forRow]
+        return TableCellViewModel(publication: publication)
+    }
+    
+    func detailViewModel(forRow: Int) -> DetailViewModelType {
+        let publication:Publication? = publications?[forRow]
+        return DetailViewModel(publication: publication)
+    }
+    
+    //MARK: - delegate
+    private func updateTable() {
+        DispatchQueue.main.async {
+            self.delegate?.onReadyDataLoad()
+        }
     }
 
 }
-
-
-
-//func jsonToDict(json: Any?) {
-//    // data we are getting from network request
-//
-//    print(json ?? "")
-//    guard let jsonDict = json as? [String: [String: Any]] else {
-//            print("Error in ", #function)
-//            return
-//    }
-//
-//    print(jsonDict)
-//
-//}
-
-
-//                do {
-//                    if let data = data {
-//                        do {
-//                            let jsonResponse = try JSONSerialization.jsonObject(with:
-//                                    data, options: [])
-//                            self.jsonToDict(json: jsonResponse)
-//                        } catch let parsingError {
-//                            print("Parsing Error", parsingError)
-//                        }
-//                    }
-//                }
