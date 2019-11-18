@@ -2,12 +2,12 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gQh-5k-ViW">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--news-->
         <scene sceneID="lek-x5-TMt">
             <objects>
                 <tableViewController id="wMD-gt-kvg" customClass="TableViewController" customModule="SberbankTestTask" customModuleProvider="target" sceneMemberID="viewController">
@@ -63,8 +63,9 @@
                             <outlet property="delegate" destination="wMD-gt-kvg" id="lZd-dx-l8Y"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="dli-5x-lsB"/>
+                    <navigationItem key="navigationItem" title="news" id="dli-5x-lsB"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="OlD-1b-WSS">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle"/>
                         <connections>
@@ -80,7 +81,7 @@
             </objects>
             <point key="canvasLocation" x="1442.0289855072465" y="278.57142857142856"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--publication-->
         <scene sceneID="Pgz-dM-aX8">
             <objects>
                 <viewController storyboardIdentifier="DetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wBn-rG-kG2" customClass="DetailViewController" customModule="SberbankTestTask" customModuleProvider="target" sceneMemberID="viewController">
@@ -208,7 +209,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="9tU-8B-Dui"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Va9-2x-6vF"/>
+                    <navigationItem key="navigationItem" title="publication" id="Va9-2x-6vF"/>
                     <connections>
                         <outlet property="descriptionLable" destination="JCc-kT-yKW" id="dad-Sr-P4F"/>
                         <outlet property="publishedAtLable" destination="kqX-qy-VFk" id="Doj-X5-zJ1"/>
