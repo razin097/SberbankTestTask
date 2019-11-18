@@ -9,23 +9,23 @@
 import Foundation
 
 class DetailViewModel: TableCellViewModel, DetailViewModelType {
-    
+
     //MARK: - public vars
-    var url:String {
+    var url: String {
         return publication?.urlToPublication ?? ""
     }
-    
-    var description:String {
+
+    var description: String {
         return publication?.description ?? ""
     }
-    
-    var publishedAt:String {
+
+    var publishedAt: String {
         return publication?.publishedAt ?? ""
     }
-    
+
     //MARK: - functions
-    func setUrlWached(){
-        var watched:[String] = (UserDefaults.standard.array(forKey: "watched") ?? [] )as! [String]
+    func setUrlWached() {
+        var watched: [String] = (UserDefaults.standard.array(forKey: "watched") ?? [])as! [String]
         print("watched = ", watched)
         if !(watched.contains(self.url)) {
             watched.append(url)

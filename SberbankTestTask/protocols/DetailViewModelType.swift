@@ -9,15 +9,14 @@
 import Foundation
 
 protocol DetailViewModelType: TableCellViewModelType {
-        
+
     //MARK: - public vars
-    var url:String {get}
-    
-    var description:String {get}
-    
-    var publishedAt:String {get}
-    
+    var url: String { get }
+
+    var description: String { get }
+
+    var publishedAt: String { get }
+
     //MARK: - functions
     func setUrlWached()
-
 }

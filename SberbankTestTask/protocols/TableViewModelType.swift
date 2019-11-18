@@ -8,24 +8,24 @@
 
 import Foundation
 
-protocol TableViewModelType {
+protocol TableViewModelType: class {
 
     //MARK: - init
-    init(delegate:UpdateTableDelegate)
-    
+    init(delegate: UpdateTableDelegate)
+
     //MARK: - rows counting
-    var numberOfRows: Int {get}
-    
+    var numberOfRows: Int { get }
+
     func resetMaxNumberOfRows()
-    
+
     //MARK: - json get & parse
     func refreshData(searchWord: String)
-    
+
     //MARK: - load more
     func loadMore(searchWord: String?)
-        
+
     //MARK: - view models
     func cellViewModel(forRow: Int) -> TableCellViewModelType
-    
+
     func detailViewModel(forRow: Int) -> DetailViewModelType
 }

@@ -15,5 +15,3 @@ let urlPrefix = "https://newsapi.org/v2/everything?"
 let urlParams = "q=bitcoin&from=2019-10-13&sortBy=publishedAt&apiKey="
 let fromDate = "2019-10-20"
 let defaultSearchWord = "news"
-
-

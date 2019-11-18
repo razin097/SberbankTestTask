@@ -9,7 +9,6 @@
 import UIKit
 
 class TableViewController: UITableViewController, UpdateTableDelegate, UISearchBarDelegate {
-    
 
     //MARK: - var, let, property
     @IBOutlet weak var searchBar: UISearchBar!
@@ -72,7 +71,7 @@ class TableViewController: UITableViewController, UpdateTableDelegate, UISearchB
         performSegue(withIdentifier: "goToDetailView", sender: indexPath)
         (tableView.cellForRow(at: indexPath) as! CustomTableViewCell).setWatched()
     }
-    
+
     //MARK: - segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToDetailView" {
@@ -81,9 +80,9 @@ class TableViewController: UITableViewController, UpdateTableDelegate, UISearchB
             }
         }
     }
-    
+
     //MARK: - actions
-    @IBAction func refresh(sender: UIRefreshControl){
+    @IBAction func refresh(sender: UIRefreshControl) {
         sender.endRefreshing()
         viewModel?.resetMaxNumberOfRows()
         viewModel?.refreshData(searchWord: self.searchBar.text ?? defaultSearchWord)
