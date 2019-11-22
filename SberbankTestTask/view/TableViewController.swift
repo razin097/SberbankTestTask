@@ -91,7 +91,7 @@ class TableViewController: UITableViewController, UpdateTableDelegate, UISearchB
 }
 
 //MARK: - delegate
-protocol UpdateTableDelegate {
+protocol UpdateTableDelegate: AnyObject {
     func onReadyDataLoad()
 }
 
@@ -99,5 +99,10 @@ extension TableViewController {
     func onReadyDataLoad() {
         tableView.reloadData()
     }
+    
+    func addRowsIfNeeded() {
+        
+    }
+    
 }
 

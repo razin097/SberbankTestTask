@@ -24,6 +24,7 @@
 		EFCA9D27237CAF8100DA2AE9 /* config.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA9D26237CAF8100DA2AE9 /* config.swift */; };
 		EFCA9D29237CB0DA00DA2AE9 /* Publication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA9D28237CB0DA00DA2AE9 /* Publication.swift */; };
 		EFCA9D2B237CBB3E00DA2AE9 /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA9D2A237CBB3E00DA2AE9 /* TableViewModel.swift */; };
+		EFEB3C5923880376002D151B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEB3C5823880376002D151B /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		EFCA9D26237CAF8100DA2AE9 /* config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = config.swift; sourceTree = "<group>"; };
 		EFCA9D28237CB0DA00DA2AE9 /* Publication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publication.swift; sourceTree = "<group>"; };
 		EFCA9D2A237CBB3E00DA2AE9 /* TableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
+		EFEB3C5823880376002D151B /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			children = (
 				EFCA9D28237CB0DA00DA2AE9 /* Publication.swift */,
 				EF5C2957237DBEFB0037D3F8 /* PublicationsStruct.swift */,
+				EFEB3C5823880376002D151B /* Network.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				EFCA9D2B237CBB3E00DA2AE9 /* TableViewModel.swift in Sources */,
 				EF1B150E23735DD900FFFA56 /* TableViewController.swift in Sources */,
 				EF1B150A23735DD900FFFA56 /* AppDelegate.swift in Sources */,
+				EFEB3C5923880376002D151B /* Network.swift in Sources */,
 				EF1B150C23735DD900FFFA56 /* SceneDelegate.swift in Sources */,
 				EF5C295A237DC5230037D3F8 /* CustomTableViewCell.swift in Sources */,
 				EF5C295C237E0EA50037D3F8 /* TableCellViewModel.swift in Sources */,

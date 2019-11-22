@@ -12,29 +12,32 @@ import UIKit
 class CustomTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLable: UILabel!
-    @IBOutlet weak var urlToImageLable: UILabel!
+//    @IBOutlet weak var urlToImageLable: UILabel!
     @IBOutlet weak var watched: UILabel!
+    @IBOutlet weak var titleImageView:UIImageView!
 
     func setWatched() {
         titleLable.alpha = 0.25
-        urlToImageLable.alpha = 0.25
+//        urlToImageLable.alpha = 0.25
+        titleImageView.alpha = 0.25
         watched.isHidden = false
     }
 
     func setNotWatched() {
         titleLable.alpha = 1
-        urlToImageLable.alpha = 1
+//        urlToImageLable.alpha = 1
+        titleImageView.alpha = 1
         watched.isHidden = true
     }
 
     weak var viewModel: TableCellViewModelType? {
         willSet(viewModel) {
             titleLable.text = viewModel?.title
-            urlToImageLable.text = viewModel?.urlToImage
+//            urlToImageLable.text = viewModel?.urlToImage
             if viewModel?.urlToImage == "no image url in publication" {
-                urlToImageLable.textColor = .secondaryLabel
+                titleImageView.image = UIImage(named: "placeholder_rounded")
             } else {
-                urlToImageLable.textColor = .link
+                titleImageView.image = UIImage(named: "placeholder_rounded")
             }
             if viewModel?.isWatched == true {
                 self.setWatched()

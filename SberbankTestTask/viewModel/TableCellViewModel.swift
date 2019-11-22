@@ -17,6 +17,10 @@ class TableCellViewModel: TableCellViewModelType {
     required init (publication: Publication?) {
         self.publication = publication
     }
+    
+    func getAndUpdatePicture() {
+        
+    }
 
     //MARK: - public vars
     var title: String {

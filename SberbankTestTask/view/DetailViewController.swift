@@ -11,7 +11,7 @@ import UIKit
 class DetailViewController: UIViewController {
 
     //MARK: - outlets
-    @IBOutlet weak var urlToImageButton: UIButton!
+//    @IBOutlet weak var urlToImageButton: UIButton!
     @IBOutlet weak var publishedAtLable: UILabel!
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var descriptionLable: UILabel!
@@ -23,12 +23,12 @@ class DetailViewController: UIViewController {
     //MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshFields()
+        setUrlWatched()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        roundindSubviews()
-        refreshFields()
-        setUrlWatched()
+        super.viewWillAppear(true)
     }
 
     //MARK: - functions logic
@@ -36,15 +36,19 @@ class DetailViewController: UIViewController {
         guard let viewModel = self.viewModel else { return }
         viewModel.setUrlWached()
     }
+    
+    override func viewDidLayoutSubviews() {
+        roundindSubviews()
+    }
 
     func refreshFields() {
         guard let viewModel = self.viewModel else { return }
-        urlToImageButton.setTitle(viewModel.urlToImage, for: .normal)
-        urlToImageButton.titleLabel?.numberOfLines = 2
+//        urlToImageButton.setTitle(viewModel.urlToImage, for: .normal)
+//        urlToImageButton.titleLabel?.numberOfLines = 2
         if viewModel.urlToImage != "no image url in publication" {
-            urlToImageButton.setTitleColor(.link, for: .normal)
+//            urlToImageButton.setTitleColor(.link, for: .normal)
         } else {
-            urlToImageButton.setTitleColor(.secondaryLabel, for: .normal)
+//            urlToImageButton.setTitleColor(.secondaryLabel, for: .normal)
         }
         publishedAtLable.text = viewModel.publishedAt
         titleLable.text = viewModel.title

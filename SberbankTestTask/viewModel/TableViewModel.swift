@@ -12,7 +12,7 @@ import Foundation
 class TableViewModel: TableViewModelType {
 
     //MARK: - var, let, property
-    private var delegate: UpdateTableDelegate?
+    private weak var delegate: UpdateTableDelegate?
     private var publications: [Publication]?
     private var maxNumberOfRows = numberOfRowsInEachPart
 
