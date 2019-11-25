@@ -7,19 +7,31 @@
 //
 
 import Foundation
+import UIKit
 
-class TableCellViewModel: TableCellViewModelType {
+class TableCellViewModel: TableCellViewModelType, TableCellViewModelDelegate {
 
     //MARK: - var, let, property
     internal let publication: Publication?
+    private weak var delegate:LoadPhotoDelegate?
+    private lazy var network:TableCellNetwork = TableCellNetwork(delegate: self)
 
     //MARK: - init
     required init (publication: Publication?) {
         self.publication = publication
     }
     
+    deinit {
+        print(#function, #file)
+    }
+    
+    //MARK: - functions
+    func setDelegate(delegate:LoadPhotoDelegate){
+        self.delegate = delegate
+    }
+    
     func getAndUpdatePicture() {
-        
+        network.getPhoto(stringUrl: self.urlToImage)
     }
 
     //MARK: - public vars
@@ -34,7 +46,26 @@ class TableCellViewModel: TableCellViewModelType {
     var isWatched: Bool {
         guard let publication = self.publication else { return false }
         guard let url = publication.urlToPublication else { return false }
-        let arr = UserDefaults.standard.array(forKey: "watched") as? [String]
-        return arr?.contains(url) ?? false
+        return CoreDataManager().isUrlInCoreData(stringUrl: url)
+    }
+    
+    func loadImage(){
+        if self.urlToImage != "no image url in publication"{
+//            network.loadImageByUrl(stringUrl: self.urlToImage)
+            self.getAndUpdatePicture()
+        }
+    }
+}
+
+protocol TableCellViewModelDelegate: AnyObject {
+    func onReadyLoadingPhoto(image:Data)
+}
+
+extension TableCellViewModel {
+    func onReadyLoadingPhoto(image:Data){
+        print(#function)
+        DispatchQueue.main.async {
+            self.delegate?.onReadyLoadingPhoto(image: image)
+        }
     }
 }

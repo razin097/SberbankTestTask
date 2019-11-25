@@ -8,13 +8,13 @@
 
 import Foundation
 
-
-class TableViewModel: TableViewModelType {
+class TableViewModel: TableViewModelType, TableViewModelDelegate {
 
     //MARK: - var, let, property
     private weak var delegate: UpdateTableDelegate?
     private var publications: [Publication]?
     private var maxNumberOfRows = numberOfRowsInEachPart
+    private lazy var networkManager:TableNetwork = TableNetwork(delegate: self)
 
     //MARK: - init
     required init(delegate: UpdateTableDelegate) {
@@ -36,56 +36,11 @@ class TableViewModel: TableViewModelType {
 
     //MARK: - json get & parse
     public func refreshData(searchWord: String) {
-        getJsonFromApi(searchWord: searchWord)
-    }
-
-    private func getJsonFromApi(searchWord: String) {
-        let urlString = urlPrefix + "q=\(searchWord == "" ? "news" : searchWord)&from=\(fromDate)&sortBy=publishedAt&apiKey=\(apiKey)"
-        print(urlString)
-        guard let url = URL(string: urlString) else { return }
-        let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
-
-            guard let data = data else { return }
-            do {
-                let decoder = JSONDecoder()
-                let response = try decoder.decode(PublicationsStruct.self, from: data)
-                self.parsePublications(publs: response)
-            } catch { print(error) }
-        })
-        task.resume()
-    }
-
-    private func parsePublications(publs: PublicationsStruct) {
-        var arr: [Publication] = Array()
-
-        for k in publs.articles {
-            let newPublication = Publication(author: k?.author,
-                title: k?.title,
-                description: k?.description,
-                publishedAt: k?.publishedAt,
-                urlToPublication: k?.url,
-                urlToImage: k?.urlToImage)
-
-            arr.append(newPublication)
+        if searchWord.count == 0 {
+            onReadyGettingDataFromApi(data: [])
+        } else {
+            networkManager.getJsonFromApi(searchWord: searchWord)
         }
-        self.publications = arr
-        self.updateTable()
-    }
-
-    //MARK: - load more
-    func loadMore(searchWord: String?) {
-        if self.moreRows() == true {
-            self.refreshData(searchWord: searchWord ?? defaultSearchWord)
-        }
-    }
-
-    func moreRows() -> Bool {
-        let buf = self.maxNumberOfRows
-        self.maxNumberOfRows += numberOfRowsInEachPart
-        if self.maxNumberOfRows > maxNumberOfRowsInTable {
-            self.maxNumberOfRows = maxNumberOfRowsInTable
-        }
-        return buf != self.maxNumberOfRows
     }
 
     //MARK: - view models
@@ -105,5 +60,15 @@ class TableViewModel: TableViewModelType {
             self.delegate?.onReadyDataLoad()
         }
     }
+}
 
+protocol TableViewModelDelegate: AnyObject {
+    func onReadyGettingDataFromApi(data:[Publication])
+}
+
+extension TableViewModel {
+    func onReadyGettingDataFromApi(data:[Publication]){
+        self.publications = data
+        self.updateTable()
+    }
 }

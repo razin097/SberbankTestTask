@@ -20,6 +20,7 @@ class TableViewController: UITableViewController, UpdateTableDelegate, UISearchB
 
         viewModel = TableViewModel(delegate: self)
         viewModel?.refreshData(searchWord: defaultSearchWord)
+        self.searchBar.text = defaultSearchWord
         searchBar.delegate = self
         tableView.separatorColor = .secondaryLabel
     }
@@ -27,10 +28,10 @@ class TableViewController: UITableViewController, UpdateTableDelegate, UISearchB
     //MARK: - search bar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        var searchWord = searchBar.text ?? defaultSearchWord
-        if searchWord.count == 0 {
-            searchWord = defaultSearchWord
-        }
+        let searchWord = searchBar.text ?? ""
+//        if searchWord.count == 0 {
+//             searchWord = defaultSearchWord
+//         }
         viewModel?.resetMaxNumberOfRows()
         viewModel?.refreshData(searchWord: searchWord)
     }
@@ -41,15 +42,6 @@ class TableViewController: UITableViewController, UpdateTableDelegate, UISearchB
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.becomeFirstResponder()
-    }
-    //MARK: - scroll view
-    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let currentOffset = scrollView.contentOffset.y
-        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-
-        if maximumOffset - currentOffset <= 0.0 {
-            viewModel?.loadMore(searchWord: self.searchBar.text)
-        }
     }
 
     //MARK: - table view
@@ -99,10 +91,5 @@ extension TableViewController {
     func onReadyDataLoad() {
         tableView.reloadData()
     }
-    
-    func addRowsIfNeeded() {
-        
-    }
-    
 }
 

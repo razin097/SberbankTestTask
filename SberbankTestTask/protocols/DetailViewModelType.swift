@@ -18,5 +18,5 @@ protocol DetailViewModelType: TableCellViewModelType {
     var publishedAt: String { get }
 
     //MARK: - functions
-    func setUrlWached()
+    func setUrlWatched()
 }

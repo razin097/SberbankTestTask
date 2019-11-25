@@ -9,13 +9,19 @@
 import Foundation
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
+class CustomTableViewCell: UITableViewCell, LoadPhotoDelegate {
 
     @IBOutlet weak var titleLable: UILabel!
 //    @IBOutlet weak var urlToImageLable: UILabel!
     @IBOutlet weak var watched: UILabel!
-    @IBOutlet weak var titleImageView:UIImageView!
+    @IBOutlet weak var titleImageView: UIImageView!
 
+    var titleImage: (image: UIImage?, url: String) = (nil, "")
+
+    deinit {
+        print(#function, #file)
+    }
+    
     func setWatched() {
         titleLable.alpha = 0.25
 //        urlToImageLable.alpha = 0.25
@@ -30,20 +36,36 @@ class CustomTableViewCell: UITableViewCell {
         watched.isHidden = true
     }
 
-    weak var viewModel: TableCellViewModelType? {
+    var viewModel: TableCellViewModelType? {
         willSet(viewModel) {
+            viewModel?.setDelegate(delegate: self)
             titleLable.text = viewModel?.title
 //            urlToImageLable.text = viewModel?.urlToImage
-            if viewModel?.urlToImage == "no image url in publication" {
-                titleImageView.image = UIImage(named: "placeholder_rounded")
-            } else {
-                titleImageView.image = UIImage(named: "placeholder_rounded")
-            }
             if viewModel?.isWatched == true {
                 self.setWatched()
             } else {
                 self.setNotWatched()
             }
+            if viewModel?.urlToImage == "no image url in publication" {
+                titleImageView.image = UIImage(named: "placeholder_rounded")
+            }
+            else if let image = self.titleImage.image, let url = viewModel?.urlToImage, url == titleImage.url {
+                titleImageView.image = image
+            }
+            else {
+                titleImageView.image = UIImage(named: "loading_icon")
+                self.titleImage.url = viewModel?.urlToImage ?? ""
+                viewModel?.getAndUpdatePicture()
+            }
+
         }
+    }
+}
+
+extension CustomTableViewCell {
+    func onReadyLoadingPhoto(image: Data) {
+        print(#function)
+        self.titleImage.image = UIImage(data: image)
+        titleImageView.image = self.titleImage.image
     }
 }

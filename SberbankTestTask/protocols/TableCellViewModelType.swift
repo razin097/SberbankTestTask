@@ -19,4 +19,9 @@ protocol TableCellViewModelType: class {
     var urlToImage: String { get }
 
     var isWatched: Bool { get }
+    
+    func setDelegate(delegate:LoadPhotoDelegate)
+
+    func getAndUpdatePicture()
+
 }

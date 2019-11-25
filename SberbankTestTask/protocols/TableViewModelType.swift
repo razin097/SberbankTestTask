@@ -21,9 +21,6 @@ protocol TableViewModelType: class {
     //MARK: - json get & parse
     func refreshData(searchWord: String)
 
-    //MARK: - load more
-    func loadMore(searchWord: String?)
-
     //MARK: - view models
     func cellViewModel(forRow: Int) -> TableCellViewModelType
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, LoadPhotoDelegate {
 
     //MARK: - outlets
 //    @IBOutlet weak var urlToImageButton: UIButton!
@@ -16,40 +16,32 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var descriptionLable: UILabel!
     @IBOutlet weak var urlButton: UIButton!
+    @IBOutlet weak var imageView:UIImageView!
+
 
     //MARK: - var, let, property
-    var viewModel: DetailViewModelType?
+    var viewModel: DetailViewModelType?{
+        didSet {
+            viewModel?.setUrlWatched()
+        }
+    }
 
     //MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        roundindSubviews()
         refreshFields()
-        setUrlWatched()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        setPhoto()
     }
 
     //MARK: - functions logic
-    func setUrlWatched() {
-        guard let viewModel = self.viewModel else { return }
-        viewModel.setUrlWached()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        roundindSubviews()
+    func setPhoto(){
+        viewModel?.setDelegate(delegate: self)
+        viewModel?.getAndUpdatePicture()
     }
 
     func refreshFields() {
         guard let viewModel = self.viewModel else { return }
-//        urlToImageButton.setTitle(viewModel.urlToImage, for: .normal)
-//        urlToImageButton.titleLabel?.numberOfLines = 2
-        if viewModel.urlToImage != "no image url in publication" {
-//            urlToImageButton.setTitleColor(.link, for: .normal)
-        } else {
-//            urlToImageButton.setTitleColor(.secondaryLabel, for: .normal)
-        }
         publishedAtLable.text = viewModel.publishedAt
         titleLable.text = viewModel.title
         descriptionLable.text = viewModel.description
@@ -71,5 +63,11 @@ class DetailViewController: UIViewController {
     @IBAction func onUrlClick(sender: UIButton) {
         guard let url = URL(string: sender.title(for: .normal)!) else { return }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+}
+
+extension DetailViewController {
+    func onReadyLoadingPhoto(image: Data) {
+        imageView.image = UIImage(data: image)
     }
 }

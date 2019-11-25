@@ -24,7 +24,12 @@
 		EFCA9D27237CAF8100DA2AE9 /* config.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA9D26237CAF8100DA2AE9 /* config.swift */; };
 		EFCA9D29237CB0DA00DA2AE9 /* Publication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA9D28237CB0DA00DA2AE9 /* Publication.swift */; };
 		EFCA9D2B237CBB3E00DA2AE9 /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA9D2A237CBB3E00DA2AE9 /* TableViewModel.swift */; };
-		EFEB3C5923880376002D151B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEB3C5823880376002D151B /* Network.swift */; };
+		EFEB3C5923880376002D151B /* TablelNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEB3C5823880376002D151B /* TablelNetwork.swift */; };
+		EFF9C616238B20CB005EF705 /* TableCellNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF9C615238B20CB005EF705 /* TableCellNetwork.swift */; };
+		EFF9C619238C00A6005EF705 /* SberbankTestTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFF9C617238C00A6005EF705 /* SberbankTestTask.xcdatamodeld */; };
+		EFF9C61B238C1DD3005EF705 /* LoadPhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF9C61A238C1DD3005EF705 /* LoadPhotoDelegate.swift */; };
+		EFF9C61D238C77CB005EF705 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF9C61C238C77CB005EF705 /* CoreDataManager.swift */; };
+		EFF9C61F238C783E005EF705 /* CoreDataManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF9C61E238C783E005EF705 /* CoreDataManagerType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +52,12 @@
 		EFCA9D26237CAF8100DA2AE9 /* config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = config.swift; sourceTree = "<group>"; };
 		EFCA9D28237CB0DA00DA2AE9 /* Publication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publication.swift; sourceTree = "<group>"; };
 		EFCA9D2A237CBB3E00DA2AE9 /* TableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
-		EFEB3C5823880376002D151B /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		EFEB3C5823880376002D151B /* TablelNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablelNetwork.swift; sourceTree = "<group>"; };
+		EFF9C615238B20CB005EF705 /* TableCellNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellNetwork.swift; sourceTree = "<group>"; };
+		EFF9C618238C00A6005EF705 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		EFF9C61A238C1DD3005EF705 /* LoadPhotoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPhotoDelegate.swift; sourceTree = "<group>"; };
+		EFF9C61C238C77CB005EF705 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		EFF9C61E238C783E005EF705 /* CoreDataManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +74,7 @@
 		EF1B14FD23735DD900FFFA56 = {
 			isa = PBXGroup;
 			children = (
+				EFF9C617238C00A6005EF705 /* SberbankTestTask.xcdatamodeld */,
 				EF1B150823735DD900FFFA56 /* SberbankTestTask */,
 				EF1B150723735DD900FFFA56 /* Products */,
 			);
@@ -102,6 +113,8 @@
 				EFCA9D21237B7ABD00DA2AE9 /* TableViewModelType.swift */,
 				EFCA9D23237B7AD300DA2AE9 /* TableCellViewModelType.swift */,
 				EFCA9D1F237B7A9C00DA2AE9 /* DetailViewModelType.swift */,
+				EFF9C61A238C1DD3005EF705 /* LoadPhotoDelegate.swift */,
+				EFF9C61E238C783E005EF705 /* CoreDataManagerType.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -130,7 +143,9 @@
 			children = (
 				EFCA9D28237CB0DA00DA2AE9 /* Publication.swift */,
 				EF5C2957237DBEFB0037D3F8 /* PublicationsStruct.swift */,
-				EFEB3C5823880376002D151B /* Network.swift */,
+				EFEB3C5823880376002D151B /* TablelNetwork.swift */,
+				EFF9C615238B20CB005EF705 /* TableCellNetwork.swift */,
+				EFF9C61C238C77CB005EF705 /* CoreDataManager.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -209,10 +224,15 @@
 				EF5C2958237DBEFB0037D3F8 /* PublicationsStruct.swift in Sources */,
 				EFCA9D24237B7AD300DA2AE9 /* TableCellViewModelType.swift in Sources */,
 				EFCA9D2B237CBB3E00DA2AE9 /* TableViewModel.swift in Sources */,
+				EFF9C61D238C77CB005EF705 /* CoreDataManager.swift in Sources */,
+				EFF9C616238B20CB005EF705 /* TableCellNetwork.swift in Sources */,
 				EF1B150E23735DD900FFFA56 /* TableViewController.swift in Sources */,
 				EF1B150A23735DD900FFFA56 /* AppDelegate.swift in Sources */,
-				EFEB3C5923880376002D151B /* Network.swift in Sources */,
+				EFEB3C5923880376002D151B /* TablelNetwork.swift in Sources */,
+				EFF9C61F238C783E005EF705 /* CoreDataManagerType.swift in Sources */,
+				EFF9C61B238C1DD3005EF705 /* LoadPhotoDelegate.swift in Sources */,
 				EF1B150C23735DD900FFFA56 /* SceneDelegate.swift in Sources */,
+				EFF9C619238C00A6005EF705 /* SberbankTestTask.xcdatamodeld in Sources */,
 				EF5C295A237DC5230037D3F8 /* CustomTableViewCell.swift in Sources */,
 				EF5C295C237E0EA50037D3F8 /* TableCellViewModel.swift in Sources */,
 				EFCA9D29237CB0DA00DA2AE9 /* Publication.swift in Sources */,
@@ -420,6 +440,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EFF9C617238C00A6005EF705 /* SberbankTestTask.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EFF9C618238C00A6005EF705 /* Model.xcdatamodel */,
+			);
+			currentVersion = EFF9C618238C00A6005EF705 /* Model.xcdatamodel */;
+			path = SberbankTestTask.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EF1B14FE23735DD900FFFA56 /* Project object */;
 }
