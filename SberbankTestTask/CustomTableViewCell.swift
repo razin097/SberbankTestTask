@@ -43,13 +43,13 @@ class CustomTableViewCell: UITableViewCell, LoadPhotoDelegate {
                 self.setNotWatched()
             }
             if viewModel?.urlToImage == "no image url in publication" {
-                titleImageView.image = UIImage(named: "placeholder_rounded")
+                titleImageView.image = UIImage(systemName: "photo")
             }
             else if let image = self.titleImage.image, let url = viewModel?.urlToImage, url == titleImage.url {
                 titleImageView.image = image
             }
             else {
-                titleImageView.image = UIImage(named: "loading_icon")
+                titleImageView.image = UIImage(systemName: "slowmo")
                 self.titleImage.url = viewModel?.urlToImage ?? ""
                 viewModel?.getAndUpdatePicture()
             }
