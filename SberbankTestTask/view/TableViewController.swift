@@ -29,9 +29,6 @@ class TableViewController: UITableViewController, UpdateTableDelegate, UISearchB
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         let searchWord = searchBar.text ?? ""
-//        if searchWord.count == 0 {
-//             searchWord = defaultSearchWord
-//         }
         viewModel?.resetMaxNumberOfRows()
         viewModel?.refreshData(searchWord: searchWord)
     }

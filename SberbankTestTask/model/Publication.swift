@@ -9,6 +9,7 @@
 import Foundation
 
 class Publication {
+    
     let author: String?
     let title: String?
     let description: String?
@@ -24,4 +25,5 @@ class Publication {
         self.urlToPublication = urlToPublication
         self.urlToImage = urlToImage
     }
+    
 }

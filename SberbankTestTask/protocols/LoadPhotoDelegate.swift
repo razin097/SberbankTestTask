@@ -9,5 +9,7 @@
 import Foundation
 
 protocol LoadPhotoDelegate: AnyObject {
+    
     func onReadyLoadingPhoto(image:Data)
+    
 }

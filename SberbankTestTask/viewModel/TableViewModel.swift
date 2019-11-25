@@ -60,6 +60,7 @@ class TableViewModel: TableViewModelType, TableViewModelDelegate {
             self.delegate?.onReadyDataLoad()
         }
     }
+    
 }
 
 protocol TableViewModelDelegate: AnyObject {

@@ -10,6 +10,7 @@ import Foundation
 
 // struct for parse json
 struct PublicationsStruct: Codable {
+    
     let status: String?
     let totalResults: Int?
     struct Articles: Codable {
@@ -29,4 +30,5 @@ struct PublicationsStruct: Codable {
         let sourse: Sourse?
     }
     let articles: [Articles?]
+    
 }

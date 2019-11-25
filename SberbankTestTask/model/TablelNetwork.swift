@@ -21,13 +21,13 @@ class TableNetwork {
     }
 
     public func getJsonFromApi(searchWord: String) {
-        let urlString = urlPrefix + "q=\(searchWord == "" ? "news" : searchWord)&from=\(fromDate)&sortBy=publishedAt&apiKey=\(apiKey)"
+        let stringUrl = urlPrefix + "q=\(searchWord == "" ? "news" : searchWord)&from=\(fromDate)&sortBy=publishedAt&apiKey=\(apiKey)"
         
         // fixed bug with invalid data in url
         // was:
-        // let url = URL(string: urlString)
+        // let url = URL(string: stringUrl)
         // now:
-        guard let encoded = urlString.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else { return }
+        guard let encoded = stringUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else { return }
         guard let url = URL(string: encoded) else { return }
         // all unicode symbols can be used now
         
@@ -47,7 +47,6 @@ class TableNetwork {
 
     private func parsePublications(publs: PublicationsStruct) -> [Publication] {
         var arr: [Publication] = Array()
-
         for k in publs.articles {
             let newPublication = Publication(author: k?.author,
                 title: k?.title,
@@ -55,9 +54,10 @@ class TableNetwork {
                 publishedAt: k?.publishedAt,
                 urlToPublication: k?.url,
                 urlToImage: k?.urlToImage)
-
+            
             arr.append(newPublication)
         }
         return arr
     }
+    
 }

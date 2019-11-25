@@ -20,7 +20,8 @@ class TableCellNetwork {
     }
 
     public func getPhoto(stringUrl: String) {
-        guard let url = URL(string: stringUrl) else { return }
+        guard let encoded = stringUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else { return }
+        guard let url = URL(string: encoded) else { return }
         let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
             guard let data = data, let delegate = self.delegate else {
                 self.delegate = nil
@@ -30,4 +31,5 @@ class TableCellNetwork {
         })
         task.resume()
     }
+    
 }

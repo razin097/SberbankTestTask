@@ -12,7 +12,6 @@ import UIKit
 class CustomTableViewCell: UITableViewCell, LoadPhotoDelegate {
 
     @IBOutlet weak var titleLable: UILabel!
-//    @IBOutlet weak var urlToImageLable: UILabel!
     @IBOutlet weak var watched: UILabel!
     @IBOutlet weak var titleImageView: UIImageView!
 
@@ -24,14 +23,12 @@ class CustomTableViewCell: UITableViewCell, LoadPhotoDelegate {
     
     func setWatched() {
         titleLable.alpha = 0.25
-//        urlToImageLable.alpha = 0.25
         titleImageView.alpha = 0.25
         watched.isHidden = false
     }
 
     func setNotWatched() {
         titleLable.alpha = 1
-//        urlToImageLable.alpha = 1
         titleImageView.alpha = 1
         watched.isHidden = true
     }
@@ -40,7 +37,6 @@ class CustomTableViewCell: UITableViewCell, LoadPhotoDelegate {
         willSet(viewModel) {
             viewModel?.setDelegate(delegate: self)
             titleLable.text = viewModel?.title
-//            urlToImageLable.text = viewModel?.urlToImage
             if viewModel?.isWatched == true {
                 self.setWatched()
             } else {
@@ -60,6 +56,7 @@ class CustomTableViewCell: UITableViewCell, LoadPhotoDelegate {
 
         }
     }
+    
 }
 
 extension CustomTableViewCell {

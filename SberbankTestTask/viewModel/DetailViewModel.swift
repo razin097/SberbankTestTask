@@ -31,4 +31,5 @@ class DetailViewModel: TableCellViewModel, DetailViewModelType {
     func setUrlWatched() {
         CoreDataManager().saveUrlToCoreData(stringUrl: self.url)
     }
+    
 }

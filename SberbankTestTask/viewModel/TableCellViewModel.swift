@@ -51,10 +51,10 @@ class TableCellViewModel: TableCellViewModelType, TableCellViewModelDelegate {
     
     func loadImage(){
         if self.urlToImage != "no image url in publication"{
-//            network.loadImageByUrl(stringUrl: self.urlToImage)
             self.getAndUpdatePicture()
         }
     }
+    
 }
 
 protocol TableCellViewModelDelegate: AnyObject {
