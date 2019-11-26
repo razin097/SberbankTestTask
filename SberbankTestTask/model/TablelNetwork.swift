@@ -23,8 +23,10 @@ class TableNetwork {
         // was:
         // let url = URL(string: stringUrl)
         // now:
-        guard let encoded = stringUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else { return }
-        guard let url = URL(string: encoded) else { return }
+        guard let encoded = stringUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed), let url = URL(string: encoded) else {
+            self.delegate?.onReadyGettingDataFromApi(data: [])
+            return
+        }
 
         print(url)
         let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
