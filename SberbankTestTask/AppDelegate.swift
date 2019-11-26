@@ -16,12 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        migrateToCoreData()
+        return true
+    }
+    
+    func migrateToCoreData(){
+        // In first vertion data was stored in userdefaults
+        // migration will be done onese, at the first launch of app
+        // after installing new version
         if UserDefaults.standard.object(forKey: "watched") != nil {
+            let manager = CoreDataManager()
+            let arr = UserDefaults.standard.array(forKey: "watched") ?? []
+            for k in arr {
+                if let s = k as? String {
+                    manager.saveUrlToCoreData(stringUrl: s)
+                }
+            }
             UserDefaults.standard.removeObject(forKey: "watched")
         }
-        
-        return true
     }
 
     // MARK: UISceneSession Lifecycle
