@@ -10,10 +10,6 @@ import Foundation
 
 class DetailViewModel: TableCellViewModel, DetailViewModelType {
 
-    deinit {
-        print(#function, #file)
-    }
-
     //MARK: - public vars
     var url: String {
         return publication?.urlToPublication ?? ""

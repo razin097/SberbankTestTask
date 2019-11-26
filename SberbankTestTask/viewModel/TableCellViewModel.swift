@@ -21,10 +21,6 @@ class TableCellViewModel: TableCellViewModelType, TableCellViewModelDelegate {
         self.publication = publication
     }
 
-    deinit {
-        print(#function, #file)
-    }
-
     //MARK: - functions
     func setDelegate(delegate: LoadPhotoDelegate) {
         self.delegate = delegate

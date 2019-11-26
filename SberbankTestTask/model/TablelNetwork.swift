@@ -16,10 +16,6 @@ class TableNetwork {
         self.delegate = delegate
     }
 
-    deinit {
-        print(#function, #file)
-    }
-
     public func getJsonFromApi(searchWord: String) {
         let stringUrl = (urlPrefix + "q=\(searchWord == "" ? "news" : searchWord)&from=\(fromDate)&sortBy=publishedAt&apiKey=\(apiKey)").trimmingCharacters(in: .whitespacesAndNewlines)
 

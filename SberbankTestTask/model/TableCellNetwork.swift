@@ -15,10 +15,6 @@ class TableCellNetwork {
         self.delegate = delegate
     }
 
-    deinit {
-        print(#function, #file)
-    }
-
     public func getPhoto(stringUrl: String) {
         guard let encoded = stringUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else { return }
         guard let url = URL(string: encoded) else { return }

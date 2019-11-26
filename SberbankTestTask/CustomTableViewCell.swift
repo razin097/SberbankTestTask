@@ -17,10 +17,6 @@ class CustomTableViewCell: UITableViewCell, LoadPhotoDelegate {
 
     var titleImage: (image: UIImage?, url: String) = (nil, "")
 
-    deinit {
-        print(#function, #file)
-    }
-
     func setWatched() {
         titleLable.alpha = 0.25
         titleImageView.alpha = 0.25
