@@ -13,5 +13,5 @@ let maxNumberOfRowsInTable = 200
 let apiKey = "b59bc1f13f884301a259ebc4a7c68af2"
 let urlPrefix = "https://newsapi.org/v2/everything?"
 let urlParams = "q=bitcoin&from=2019-11-15&sortBy=publishedAt&apiKey="
-let fromDate = "2019-11-19"
+let fromDate = "2019-11-21"
 let defaultSearchWord = "news"
