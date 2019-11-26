@@ -57,7 +57,6 @@ class CustomTableViewCell: UITableViewCell, LoadPhotoDelegate {
 
 extension CustomTableViewCell {
     func onReadyLoadingPhoto(image: Data) {
-        print(#function)
         self.titleImage.image = UIImage(data: image)
         titleImageView.image = self.titleImage.image
     }

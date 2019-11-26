@@ -53,7 +53,6 @@ protocol TableCellViewModelDelegate: AnyObject {
 
 extension TableCellViewModel {
     func onReadyLoadingPhoto(image: Data) {
-        print(#function)
         DispatchQueue.main.async {
             self.delegate?.onReadyLoadingPhoto(image: image)
         }
