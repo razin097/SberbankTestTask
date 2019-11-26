@@ -15,22 +15,21 @@ class TableNetwork {
     init(delegate: TableViewModelDelegate) {
         self.delegate = delegate
     }
-    
+
     deinit {
         print(#function, #file)
     }
 
     public func getJsonFromApi(searchWord: String) {
-        let stringUrl = urlPrefix + "q=\(searchWord == "" ? "news" : searchWord)&from=\(fromDate)&sortBy=publishedAt&apiKey=\(apiKey)"
-        
+        let stringUrl = (urlPrefix + "q=\(searchWord == "" ? "news" : searchWord)&from=\(fromDate)&sortBy=publishedAt&apiKey=\(apiKey)").trimmingCharacters(in: .whitespacesAndNewlines)
+
         // fixed bug with invalid data in url
         // was:
         // let url = URL(string: stringUrl)
         // now:
         guard let encoded = stringUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else { return }
         guard let url = URL(string: encoded) else { return }
-        // all unicode symbols can be used now
-        
+
         print(url)
         let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
 
@@ -54,10 +53,10 @@ class TableNetwork {
                 publishedAt: k?.publishedAt,
                 urlToPublication: k?.url,
                 urlToImage: k?.urlToImage)
-            
+
             arr.append(newPublication)
         }
         return arr
     }
-    
+
 }

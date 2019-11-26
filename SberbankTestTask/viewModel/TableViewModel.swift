@@ -14,7 +14,7 @@ class TableViewModel: TableViewModelType, TableViewModelDelegate {
     private weak var delegate: UpdateTableDelegate?
     private var publications: [Publication]?
     private var maxNumberOfRows = numberOfRowsInEachPart
-    private lazy var networkManager:TableNetwork = TableNetwork(delegate: self)
+    private lazy var networkManager: TableNetwork = TableNetwork(delegate: self)
 
     //MARK: - init
     required init(delegate: UpdateTableDelegate) {
@@ -39,7 +39,7 @@ class TableViewModel: TableViewModelType, TableViewModelDelegate {
         if searchWord.count == 0 {
             onReadyGettingDataFromApi(data: [])
         } else {
-            networkManager.getJsonFromApi(searchWord: searchWord)
+            networkManager.getJsonFromApi(searchWord: searchWord.trimmingCharacters(in: .whitespacesAndNewlines))
         }
     }
 
@@ -60,15 +60,15 @@ class TableViewModel: TableViewModelType, TableViewModelDelegate {
             self.delegate?.onReadyDataLoad()
         }
     }
-    
+
 }
 
 protocol TableViewModelDelegate: AnyObject {
-    func onReadyGettingDataFromApi(data:[Publication])
+    func onReadyGettingDataFromApi(data: [Publication])
 }
 
 extension TableViewModel {
-    func onReadyGettingDataFromApi(data:[Publication]){
+    func onReadyGettingDataFromApi(data: [Publication]) {
         self.publications = data
         self.updateTable()
     }

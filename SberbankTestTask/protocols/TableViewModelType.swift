@@ -25,5 +25,5 @@ protocol TableViewModelType: class {
     func cellViewModel(forRow: Int) -> TableCellViewModelType
 
     func detailViewModel(forRow: Int) -> DetailViewModelType
-    
+
 }

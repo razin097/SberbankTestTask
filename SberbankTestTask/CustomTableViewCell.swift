@@ -20,7 +20,7 @@ class CustomTableViewCell: UITableViewCell, LoadPhotoDelegate {
     deinit {
         print(#function, #file)
     }
-    
+
     func setWatched() {
         titleLable.alpha = 0.25
         titleImageView.alpha = 0.25
@@ -56,7 +56,7 @@ class CustomTableViewCell: UITableViewCell, LoadPhotoDelegate {
 
         }
     }
-    
+
 }
 
 extension CustomTableViewCell {

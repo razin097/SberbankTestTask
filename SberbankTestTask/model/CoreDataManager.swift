@@ -11,12 +11,12 @@ import CoreData
 import UIKit
 
 class CoreDataManager: CoreDataManagerType {
-    
+
     func saveUrlToCoreData(stringUrl: String) {
         if stringUrl.count < 7 {
             return
         }
-        if isUrlInCoreData(stringUrl: stringUrl){
+        if isUrlInCoreData(stringUrl: stringUrl) {
             return
         }
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -25,12 +25,12 @@ class CoreDataManager: CoreDataManagerType {
         let taskObject = NSManagedObject(entity: entity!, insertInto: context) as! WatchedUrl
         taskObject.watchedUrl = stringUrl
     }
-    
+
     func isUrlInCoreData(stringUrl: String) -> Bool {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        
-        var arr:[WatchedUrl] = []
+
+        var arr: [WatchedUrl] = []
         let fetchRequest: NSFetchRequest<WatchedUrl> = WatchedUrl.fetchRequest()
         do {
             arr = try context.fetch(fetchRequest)

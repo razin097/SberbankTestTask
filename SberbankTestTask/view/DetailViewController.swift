@@ -16,11 +16,11 @@ class DetailViewController: UIViewController, LoadPhotoDelegate {
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var descriptionLable: UILabel!
     @IBOutlet weak var urlButton: UIButton!
-    @IBOutlet weak var imageView:UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
 
 
     //MARK: - var, let, property
-    var viewModel: DetailViewModelType?{
+    var viewModel: DetailViewModelType? {
         didSet {
             viewModel?.setUrlWatched()
         }
@@ -35,7 +35,7 @@ class DetailViewController: UIViewController, LoadPhotoDelegate {
     }
 
     //MARK: - functions logic
-    func setPhoto(){
+    func setPhoto() {
         viewModel?.setDelegate(delegate: self)
         viewModel?.getAndUpdatePicture()
     }

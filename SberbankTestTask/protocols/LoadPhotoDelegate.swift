@@ -9,7 +9,8 @@
 import Foundation
 
 protocol LoadPhotoDelegate: AnyObject {
-    
-    func onReadyLoadingPhoto(image:Data)
-    
+
+    //bind that photo is loaded and bring data to view from viewModel
+    func onReadyLoadingPhoto(image: Data)
+
 }

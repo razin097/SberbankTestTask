@@ -31,5 +31,5 @@ class TableCellNetwork {
         })
         task.resume()
     }
-    
+
 }

@@ -8,10 +8,10 @@
 
 import Foundation
 
-protocol CoreDataManagerType : AnyObject {
-        
-    func saveUrlToCoreData(stringUrl:String)
-    
-    func isUrlInCoreData(stringUrl:String) -> Bool
+protocol CoreDataManagerType: AnyObject {
+
+    func saveUrlToCoreData(stringUrl: String)
+
+    func isUrlInCoreData(stringUrl: String) -> Bool
 
 }

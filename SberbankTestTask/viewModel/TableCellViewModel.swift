@@ -13,25 +13,25 @@ class TableCellViewModel: TableCellViewModelType, TableCellViewModelDelegate {
 
     //MARK: - var, let, property
     internal let publication: Publication?
-    private weak var delegate:LoadPhotoDelegate?
-    private lazy var network:TableCellNetwork = TableCellNetwork(delegate: self)
+    private weak var delegate: LoadPhotoDelegate?
+    private lazy var networkManager: TableCellNetwork = TableCellNetwork(delegate: self)
 
     //MARK: - init
     required init (publication: Publication?) {
         self.publication = publication
     }
-    
+
     deinit {
         print(#function, #file)
     }
-    
+
     //MARK: - functions
-    func setDelegate(delegate:LoadPhotoDelegate){
+    func setDelegate(delegate: LoadPhotoDelegate) {
         self.delegate = delegate
     }
-    
+
     func getAndUpdatePicture() {
-        network.getPhoto(stringUrl: self.urlToImage)
+        networkManager.getPhoto(stringUrl: self.urlToImage.trimmingCharacters(in: .whitespacesAndNewlines))
     }
 
     //MARK: - public vars
@@ -48,21 +48,15 @@ class TableCellViewModel: TableCellViewModelType, TableCellViewModelDelegate {
         guard let url = publication.urlToPublication else { return false }
         return CoreDataManager().isUrlInCoreData(stringUrl: url)
     }
-    
-    func loadImage(){
-        if self.urlToImage != "no image url in publication"{
-            self.getAndUpdatePicture()
-        }
-    }
-    
+
 }
 
 protocol TableCellViewModelDelegate: AnyObject {
-    func onReadyLoadingPhoto(image:Data)
+    func onReadyLoadingPhoto(image: Data)
 }
 
 extension TableCellViewModel {
-    func onReadyLoadingPhoto(image:Data){
+    func onReadyLoadingPhoto(image: Data) {
         print(#function)
         DispatchQueue.main.async {
             self.delegate?.onReadyLoadingPhoto(image: image)
