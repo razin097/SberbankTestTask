@@ -11,7 +11,6 @@ import UIKit
 class DetailViewController: UIViewController, LoadPhotoDelegate {
 
     //MARK: - outlets
-//    @IBOutlet weak var urlToImageButton: UIButton!
     @IBOutlet weak var publishedAtLable: UILabel!
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var descriptionLable: UILabel!
