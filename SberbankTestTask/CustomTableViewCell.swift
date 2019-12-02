@@ -11,20 +11,20 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell, LoadPhotoDelegate {
 
-    @IBOutlet weak var titleLable: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var watched: UILabel!
     @IBOutlet weak var titleImageView: UIImageView!
 
     var titleImage: (image: UIImage?, url: String) = (nil, "")
 
     func setWatched() {
-        titleLable.alpha = 0.25
+        titleLabel.alpha = 0.25
         titleImageView.alpha = 0.25
         watched.isHidden = false
     }
 
     func setNotWatched() {
-        titleLable.alpha = 1
+        titleLabel.alpha = 1
         titleImageView.alpha = 1
         watched.isHidden = true
     }
@@ -32,7 +32,7 @@ class CustomTableViewCell: UITableViewCell, LoadPhotoDelegate {
     var viewModel: TableCellViewModelType? {
         willSet(viewModel) {
             viewModel?.setDelegate(delegate: self)
-            titleLable.text = viewModel?.title
+            titleLabel.text = viewModel?.title
             if viewModel?.isWatched == true {
                 self.setWatched()
             } else {

@@ -11,9 +11,9 @@ import UIKit
 class DetailViewController: UIViewController, LoadPhotoDelegate {
 
     //MARK: - outlets
-    @IBOutlet weak var publishedAtLable: UILabel!
-    @IBOutlet weak var titleLable: UILabel!
-    @IBOutlet weak var descriptionLable: UILabel!
+    @IBOutlet weak var publishedAtLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var urlButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
 
@@ -41,9 +41,9 @@ class DetailViewController: UIViewController, LoadPhotoDelegate {
 
     func refreshFields() {
         guard let viewModel = self.viewModel else { return }
-        publishedAtLable.text = viewModel.publishedAt
-        titleLable.text = viewModel.title
-        descriptionLable.text = viewModel.description
+        publishedAtLabel.text = viewModel.publishedAt
+        titleLabel.text = viewModel.title
+        descriptionLabel.text = viewModel.description
         urlButton.setTitle(viewModel.url, for: .normal)
         urlButton.titleLabel?.numberOfLines = 2
     }

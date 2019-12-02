@@ -53,7 +53,7 @@
                                 </accessibility>
                                 <connections>
                                     <outlet property="titleImageView" destination="jh0-oY-Dbo" id="Ni8-b6-169"/>
-                                    <outlet property="titleLable" destination="yhx-Sf-Add" id="pDS-Ee-ILa"/>
+                                    <outlet property="titleLabel" destination="yhx-Sf-Add" id="LJi-VV-Wak"/>
                                     <outlet property="watched" destination="Kpo-sD-qvJ" id="3IU-Vv-oBG"/>
                                 </connections>
                             </tableViewCell>
@@ -191,10 +191,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="publication" id="Va9-2x-6vF"/>
                     <connections>
-                        <outlet property="descriptionLable" destination="JCc-kT-yKW" id="dad-Sr-P4F"/>
+                        <outlet property="descriptionLabel" destination="JCc-kT-yKW" id="anQ-2H-fmW"/>
                         <outlet property="imageView" destination="x3e-bG-LuI" id="QcQ-o2-bQr"/>
-                        <outlet property="publishedAtLable" destination="kqX-qy-VFk" id="Doj-X5-zJ1"/>
-                        <outlet property="titleLable" destination="Qqg-IK-xUm" id="BDw-YQ-aTe"/>
+                        <outlet property="publishedAtLabel" destination="kqX-qy-VFk" id="FQ2-jC-4ef"/>
+                        <outlet property="titleLabel" destination="Qqg-IK-xUm" id="Xit-sN-Rhh"/>
                         <outlet property="urlButton" destination="eSK-Vb-HhU" id="wun-rU-ThF"/>
                     </connections>
                 </viewController>
